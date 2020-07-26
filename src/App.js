@@ -4,28 +4,49 @@
 
 // It all begins on the login page (/login). 
 
-// A user enters in her username & password and then hits submit, which directs her to our home page. 
+// A user enters in her username & password and then hits submit, which directs her to our homepage (/). 
 
 // On the homepage, our user sees the:
   // 1. NavBar (which contains clickable links to the home, about, sessions, and login pages), along with  
-  // 2. Upcoming Sessions for the week (which is displayed as a table with column headers: date, time, student, and session details).
+  // 2. Upcoming Sessions for the week (which is displayed as a table with column headers: date, time, student, session details, and remove).
 
-// The user then clicks on session details, which directs her to an individual session page (/sessions/:id).
+// The user then clicks on session details, which directs her to an individual session page (/sessions/:id). 
+
+// On this page, the user sees the following information: 
+
+  // Date
+  // Time
+  // Student Name
+  // School Name
+  // Parent Name
+  // Pre-Assessment Completion Status         // Change from default false to true for demo, then
+  // Add a note (for parent)                  // Add a quick note: "Hi Mrs. Smith, Adam did great! Excited to start the program!"
+
+  // ***Stretch Feature would be sending those notes to the parent's email, but for now, we'll just build out comment functionality.***
+
+// After clicking the submit button, the user is directed back to the homepage, where she clicks 'remove' (for project/demo: delete functionality w/ e.preventDefault).
+
+// Clicking the remove button will only delete that session in the front-end. 
+
+// Finally, she clicks on the 'New Session' button (located on the NavBar), which directs her to the new session page(/newSession).
+
+// Here, she simply fills out the form whose fields mirror those in the session page (/sessions/:id).
 
 //////////////////////////////////////////////////////////////////////
 
 // To-Do's: 
 
-//      [ ] Change 'Sessions' component to 'New Session' 
-//      [ ] 
-//      [ ] 
+//      [ ] Change 'Session' component to 'New Session' 
+//      [ ] Delete 'Form' component.
+//      [ ] Resolve back-end issues, then update / seed database
+//      [ ] .. 
 
 //////////////////////////////////////////////////////////////////////
 
 // 7/25 - JP Notes: I'm thinking /sessions/:id can be more of 'add notes' for tutors --- or just build out a new component (??) --- TBD.
 // 7/25 - JP To-Do's:
 
-
+//////////////////////////////////////////////////////////////////////
 
 // Sample session object:
   // { "sessions": [
