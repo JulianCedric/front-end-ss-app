@@ -1,6 +1,5 @@
 import React from 'react';
 import Session from './Session'
-// import PetPage from './PetPage'
 import { Route, Switch } from 'react-router-dom'
 
 const Sessions = props => {

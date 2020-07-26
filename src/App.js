@@ -10,7 +10,9 @@
   // 1. NavBar (which contains clickable links to the home, about, sessions, and login pages), along with  
   // 2. Upcoming Sessions for the week (which is displayed as a table with column headers: date, time, student, session details, and remove).
 
-// The user then clicks on session details, which directs her to an individual session page (/sessions/:id). 
+// The user then clicks on session details, which:
+  // ***updated_new: renders the session details underneath the table (on the homepage)*** 
+  // ***updated_old: directs her to an individual session page (/sessions/:id). 
 
 // On this page, the user sees the following information: 
 
@@ -54,7 +56,7 @@
 
 // To-Do's: 
 
-//      [ ] Change 'Session' component to 'New Session' 
+//      [ ] Change 'Session' component to 'New Session' (NewSessionForm.js) 
 //      [ ] Delete 'Form' component.
 //      [ ] Resolve back-end issues, then update / seed database
 //      [ ] .. 

@@ -1,18 +1,16 @@
 import React from 'react';
 
-class Help extends React.Component {
+class Form extends React.Component {
     state = {
         subject: '',
         content: '',
         email: '',
     }
 
-
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
     handleSubmit = e => {
         alert("Thanks for your question! We'll get back to you ASAP!")
-            /** TODO: when the user submits the question, move them to our /pets page  */
     }
 
     render(){
@@ -29,4 +27,4 @@ class Help extends React.Component {
     }
 }
 
-export default Help;
+export default Form;

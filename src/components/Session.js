@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PetCard = props => {
+const SessionDetails = props => {
 
     // Sample session object:
   // { "sessions": [
@@ -29,4 +29,4 @@ const PetCard = props => {
     )
 }
 
-export default PetCard;
+export default SessionDetails;
