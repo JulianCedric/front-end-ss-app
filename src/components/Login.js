@@ -24,12 +24,10 @@ class Login extends React.Component {
                 
                 <form className="vertical-flex" onSubmit={this.handleSubmit}>
                     
-                    <h3>Login</h3>
+                    <h2 className="mediumPurpleText">Login</h2>
                     
-                    <input name="name" placeholder="Name" value= {this.state.name} onChange={this.handleChange}/>                     
-                    <input name="username" placeholder="Username" value= {this.state.username} onChange={this.handleChange}/>
-                    <input type="password" name="password" placeholder="Password" value= {this.state.password} onChange={this.handleChange}/>
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password" value= {this.state.confirmPassword} onChange={this.handleChange}/>
+                    <input name="username" placeholder="Username" value= {this.state.username} onChange={this.handleChange}/><br></br>
+                    <input type="password" name="password" placeholder="Password" value= {this.state.password} onChange={this.handleChange}/><br></br><br></br>
                     
                     <button type="submit">Submit</button>
 
@@ -39,5 +37,5 @@ class Login extends React.Component {
         )
     }
 }
- 
+
 export default Login;

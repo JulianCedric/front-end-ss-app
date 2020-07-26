@@ -17,7 +17,7 @@ const SessionDetails = props => {
     // const { id, tutorId, studentId, date, completionStatus } = props;
 
     return (
-        <div className="session">
+        <div className="mediumPurpleText" className="session">
             <h3>Session Info:</h3>
             <div>
                 <p>Date: </p>

@@ -89,9 +89,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Login from './components/Login';
-import Sessions from './components/Sessions';
+import NewSessionForm from './components/NewSessionForm';
 import Session from './components/Session';
-import Form from './components/Form';
 
 class App extends React.Component {
   state = {
@@ -119,7 +118,7 @@ class App extends React.Component {
 
           <Route path="/login" component={Login}/>
 
-          <Route path="/sessions" render={() => <Sessions />}/>
+          <Route path="/sessions" render={() => <NewSessionForm />}/>
 
           <Route path="/sessions/:id" render={() => <Session />}/> 
 
