@@ -8,6 +8,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Login from './components/Login';
 import Sessions from './components/Sessions';
+import Session from './components/Session';
+import Form from './components/Form';
 
 class App extends React.Component {
 
@@ -26,6 +28,9 @@ class App extends React.Component {
           <Route path="/sessions" component={Sessions}>
             <Sessions />
           </Route>
+
+          <Route path="/sessions/:id" render={() => <Session />}/>
+
         </Switch>
       </div>
     );
