@@ -1,7 +1,31 @@
-// 7/25 - JP Notes: I'm thinking /sessions/:id can be more of 'add notes' for tutors --- or just build out a new component (??) --- TBD.
-// 7/26 - JP To-Do's:
+// 7/26 - JP Notes: Slight pivot in app focus - 'info-gathering app' (in progress) 
 
-//      [] Fix Login-related functions --- Not sure yet how to pass props / render the way I want it to with <Switch> in the return section.
+// USER / CUSTOMER JOURNEY: 
+
+// It all begins on the login page (/login). 
+
+// A user enters in her username & password and then hits submit, which directs her to our home page. 
+
+// On the homepage, our user sees the:
+  // 1. NavBar (which contains clickable links to the home, about, sessions, and login pages), along with  
+  // 2. Upcoming Sessions for the week (which is displayed as a table with column headers: date, time, student, and session details).
+
+// The user then clicks on session details, which directs her to an individual session page (/sessions/:id).
+
+//////////////////////////////////////////////////////////////////////
+
+// To-Do's: 
+
+//      [ ] Change 'Sessions' component to 'New Session' 
+//      [ ] 
+//      [ ] 
+
+//////////////////////////////////////////////////////////////////////
+
+// 7/25 - JP Notes: I'm thinking /sessions/:id can be more of 'add notes' for tutors --- or just build out a new component (??) --- TBD.
+// 7/25 - JP To-Do's:
+
+
 
 // Sample session object:
   // { "sessions": [
@@ -14,6 +38,8 @@
   //       "comment": ""
   //   }
   // ]}
+
+  //////////////////////////////////////////////////////////////////////
 
 import React from 'react';
 import './App.css';
@@ -50,11 +76,11 @@ class App extends React.Component {
 
           <Route path="/about" render={() => <About />}/>
 
-          <Route path="/login" render={() => <Login />}/>
+          <Route path="/login" component={Login}/>
 
           <Route path="/sessions" render={() => <Sessions />}/>
 
-          <Route path="/sessions/:id" render={() => <Session />}/>
+          <Route path="/sessions/:id" render={() => <Session />}/> 
 
         </Switch>
 
