@@ -5,8 +5,9 @@ const Navbar = props => {
     return (
         <div className="navbar">
             <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/">About</Link>
             <Link to="/sessions">Sessions</Link>
+            <Link to="/login">Login</Link>
         </div>
     )
 }
