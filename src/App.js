@@ -1,4 +1,16 @@
-// 7/25 - JP Notes: 
+// 7/25 - JP Notes: I'm thinking /sessions/:id can be more of 'add notes' for tutors --- or just build out a new component (??) --- TBD.
+
+// Sample session object:
+  // { "sessions": [
+  //   {
+  //       "id": 1,
+  //       "tutorId": 1,
+  //       "studentId": 1,
+  //       "date": "",
+  //       "completionStatus": false,
+  //       "comment": ""
+  //   }
+  // ]}
 
 import React from 'react';
 import './App.css';
@@ -17,21 +29,21 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar />
+
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/about" component={About}>
-            <About />
-          </Route>
-          <Route path="/login" component={Login}>
-            <Login />
-          </Route>
-          <Route path="/sessions" component={Sessions}>
-            <Sessions />
-          </Route>
+          
+          <Route exact path="/" render={() => <Home />}/>
+
+          <Route path="/about" render={() => <About />}/>
+
+          <Route path="/login" render={() => <Login />}/>
+
+          <Route path="/sessions" render={() => <Sessions />}/>
 
           <Route path="/sessions/:id" render={() => <Session />}/>
 
         </Switch>
+
       </div>
     );
   }
