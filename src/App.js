@@ -34,6 +34,24 @@
 
 //////////////////////////////////////////////////////////////////////
 
+// CRUD: 
+
+  // Create:
+    // A user can create a new session
+    // A user can add a comment for (stretch: email to) parent of student
+
+  // Read:
+    // A user can view all upcoming sessions
+    // A user can view an individual session's details 
+
+// Update:
+  // A user can update a student's pre-assessment completion status (in session details page)
+
+// Delete: 
+  // A user can delete a session
+
+//////////////////////////////////////////////////////////////////////
+
 // To-Do's: 
 
 //      [ ] Change 'Session' component to 'New Session' 
