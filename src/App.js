@@ -1,4 +1,7 @@
 // 7/25 - JP Notes: I'm thinking /sessions/:id can be more of 'add notes' for tutors --- or just build out a new component (??) --- TBD.
+// 7/26 - JP To-Do's:
+
+//      [] Fix Login-related functions --- Not sure yet how to pass props / render the way I want it to with <Switch> in the return section.
 
 // Sample session object:
   // { "sessions": [
@@ -6,7 +9,7 @@
   //       "id": 1,
   //       "tutorId": 1,
   //       "studentId": 1,
-  //       "date": "",
+  //       "date": "", 
   //       "completionStatus": false,
   //       "comment": ""
   //   }
@@ -24,12 +27,23 @@ import Session from './components/Session';
 import Form from './components/Form';
 
 class App extends React.Component {
+  state = {
+    pageShown: 'home',
+  }
+
+                                                                                                        // Login.js - start
+
+  changePageShown = (pageShown) => {
+    this.setState({ pageShown })
+  }
+
+                                                                                                        // Login.js - end
 
   render(){
     return (
       <div className="App">
-        <Navbar />
-
+        <Navbar changePageShown={this.changePageShown} pageShown={this.state.pageShown} /> 
+          {this.state.pageShown === 'home' ? <Home /> : null}      
         <Switch>
           
           <Route exact path="/" render={() => <Home />}/>
