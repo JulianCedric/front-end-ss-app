@@ -16,7 +16,6 @@ class Login extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
         const { username, password } = this.state;
-        {this.state.username != null ? <Home /> : null}
     }
     
     render() { 
@@ -26,9 +25,9 @@ class Login extends React.Component {
                 <input name="username" placeholder="Username" value= {this.state.username} onChange={this.handleChange}/><br></br>
                 <input type="password" name="password" placeholder="Password" value= {this.state.password} onChange={this.handleChange}/><br></br><br></br>
                 <button type="submit" onClick={this.handleSubmit}>Submit</button>
-                <Switch>
+                {/* <Switch>
                     <Route exact path="/" render={() => <Home />}/>
-                </Switch>
+                </Switch> */}
             </div>
         )
     }
