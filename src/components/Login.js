@@ -1,8 +1,8 @@
 import React from 'react';
+import { Route, Switch} from 'react-router-dom';
 
 class Login extends React.Component {
     state = {
-        isNewUser: false,
         username: "",
         password: ""
     }
@@ -15,24 +15,20 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.changePageShown('home')
+        const { username, password } = this.state;
+        {this.state.username != null ? <Home /> : null}
     }
     
     render() { 
         return (
             <div className="Login">
-                
-                <form className="vertical-flex" onSubmit={this.handleSubmit}>
-                    
-                    <h2 className="mediumPurpleText">Login</h2>
-                    
-                    <input name="username" placeholder="Username" value= {this.state.username} onChange={this.handleChange}/><br></br>
-                    <input type="password" name="password" placeholder="Password" value= {this.state.password} onChange={this.handleChange}/><br></br><br></br>
-                    
-                    <button type="submit">Submit</button>
-
-            </form>
-
+                <h2 className="mediumPurpleText">Login</h2>               
+                <input name="username" placeholder="Username" value= {this.state.username} onChange={this.handleChange}/><br></br>
+                <input type="password" name="password" placeholder="Password" value= {this.state.password} onChange={this.handleChange}/><br></br><br></br>
+                <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                <Switch>
+                    <Route exact path="/" render={() => <Home />}/>
+                </Switch>
             </div>
         )
     }

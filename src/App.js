@@ -56,9 +56,7 @@
 
 // To-Do's: 
 
-//      [ ] Change 'Session' component to 'New Session' (NewSessionForm.js) 
-//      [ ] Delete 'Form' component.
-//      [ ] Resolve back-end issues, then update / seed database
+//      [ ] Resolve back-end issues, then update / seed database with updated data
 //      [ ] .. 
 
 //////////////////////////////////////////////////////////////////////
@@ -68,68 +66,51 @@
 
 //////////////////////////////////////////////////////////////////////
 
-// Sample session object:
-  // { "sessions": [
-  //   {
-  //       "id": 1,
-  //       "tutorId": 1,
-  //       "studentId": 1,
-  //       "date": "", 
-  //       "completionStatus": false,
-  //       "comment": ""
-  //   }
-  // ]}
-
-  //////////////////////////////////////////////////////////////////////
-
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom'; 
+import {BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  useLocation,
+  useParams} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
 import About from './components/About';
 import Login from './components/Login';
-import NewSessionForm from './components/NewSessionForm';
-import Session from './components/Session';
+import Home from './components/Home';
 
 class App extends React.Component {
   state = {
     pageShown: 'home',
   }
 
-                                                                                                        // Login.js - start
-
-  changePageShown = (pageShown) => {
+  changePageShown = pageShown => {
     this.setState({ pageShown })
   }
-
-                                                                                                        // Login.js - end
 
   render(){
     return (
       <div className="App">
-        <Navbar changePageShown={this.changePageShown} pageShown={this.state.pageShown} /> 
-          {this.state.pageShown === 'home' ? <Home /> : null}      
+        <Navbar /> 
+          {this.state.pageShown === 'home' ? <Home /> : <Login changePageShown={this.changePageShown} pageShown={this.state.pageShown} />}      
         <Switch>
-          
           <Route exact path="/" render={() => <Home />}/>
-
           <Route path="/about" render={() => <About />}/>
-
           <Route path="/login" component={Login}/>
-
-          <Route path="/sessions" render={() => <NewSessionForm />}/>
-
-          <Route path="/sessions/:id" render={() => <Session />}/> 
-
         </Switch>
-
       </div>
     );
   }
 }
 
 export default App; 
+
+ 
+
+{/* <Route path="/sessions/:id" render={() => <SessionDetails />}/>  */}
+
+
 
 // export default function BasicExample() {
 //   return (

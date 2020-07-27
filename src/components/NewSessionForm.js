@@ -1,44 +1,60 @@
 import React from 'react';
-import Session from './Session'
 import { Route, Switch } from 'react-router-dom'
 
 class NewSessionForm extends React.Component {
     state = {
         date: "",
-        time: "",
-        student: "",
-        school: "",
-        parent: "",
-        preAssessmentCompletionStatus: ""
+        comment: ""
     }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
     handleSubmit = e => {
-        console.log("Clicking submit --> back to homepage")
+        e.preventDefault()
+        fetch("http://localhost:3001/sessions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(this.state)
+        })
+          .then(resp => resp.json())
+          .then(newSession => this.props.handleNewSession(newSession), 
+            this.setState({
+              date: "",
+              comment: "", 
+            })
+        )
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     render(){
-        let { subject, content, email } = this.state;
+        let { date, comment } = this.state;
         return (
             <div className="simple-flex-col">
 
                 <h2 className="mediumPurpleText">Create a New Session</h2>
 
-                <input name="date" placeholder="Date" value={subject} onChange={this.handleChange}/><br></br>
-                <input name="time" placeholder="Time" value={subject} onChange={this.handleChange}/><br></br>
+                <input name="date" placeholder="Date" value={date} onChange={this.handleChange}/><br></br>
+                {/* <input name="time" placeholder="Time" value={this.state.time} onChange={this.handleChange}/><br></br> */}
 
-                <input name="student" placeholder="Student's Name" value={subject} onChange={this.handleChange}/><br></br>
-                <input name="school" placeholder="School Name" value={subject} onChange={this.handleChange}/><br></br>
+                {/* <input name="student" placeholder="Student's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
+                {/* <input name="school" placeholder="School Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
 
-                <input name="parent" placeholder="Parent's Name" value={subject} onChange={this.handleChange}/><br></br>
-                <input name="preAssessmentCompletionStatus" placeholder="Pre-Assessment Status" value={subject} onChange={this.handleChange}/><br></br>
-
+                {/* <input name="parent" placeholder="Parent's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
+                {/* <input name="preAssessmentCompletionStatus" placeholder="Pre-Assessment Status" value={this.state.} onChange={this.handleChange}/><br></br> */}
+                
             <br></br>
 
                 <h4>Add a Note</h4>
 
-                    <textarea name="content" placeholder="Email Content" value={content} onChange={this.handleChange}/>
+                    <textarea name="comment" placeholder="Email Content" value={comment} onChange={this.handleChange}/>
 
             <br></br>
 
