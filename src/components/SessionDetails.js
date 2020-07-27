@@ -12,7 +12,7 @@ const SessionDetails = props => {
                 <p>Pre-Assessment Completed? </p>
                 <p>Notes: </p>
                 <p>{comment}</p>
-                <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button>
+                <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button> 
             </div>
         </div>
     );

@@ -41,7 +41,11 @@ class NewSessionForm extends React.Component {
 
                 <h2 className="mediumPurpleText">Create a New Session</h2>
 
-                <input name="date" placeholder="Date" value={date} onChange={this.handleChange}/><br></br>
+                <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
+                <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
+                <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
+                <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
+
                 {/* <input name="time" placeholder="Time" value={this.state.time} onChange={this.handleChange}/><br></br> */}
 
                 {/* <input name="student" placeholder="Student's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
@@ -49,15 +53,7 @@ class NewSessionForm extends React.Component {
 
                 {/* <input name="parent" placeholder="Parent's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
                 {/* <input name="preAssessmentCompletionStatus" placeholder="Pre-Assessment Status" value={this.state.} onChange={this.handleChange}/><br></br> */}
-                
-            <br></br>
-
-                <h4>Add a Note</h4>
-
-                    <textarea name="comment" placeholder="Email Content" value={comment} onChange={this.handleChange}/>
-
-            <br></br>
-
+                <textarea name="comment" placeholder="Your Notes.. " value={comment} onChange={this.handleChange}/><br></br><br></br>
                 <button type="submit" onClick={this.handleSubmit}>Submit</button>
 
             </div>

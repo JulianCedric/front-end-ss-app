@@ -22,7 +22,8 @@ class Home extends React.Component {
 
     render() { 
         return (
-            <div className="Home">
+            <div className="home">
+                <h2 className="mediumPurpleText">Home</h2>
                 <Switch>
                     <Route path="/sessions" render={(routerProps) => <SessionsContainer sessions={this.state.sessions} {...routerProps}/>}/>
                     <Route path="/sessions" render={() => <NewSessionForm />}/>

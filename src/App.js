@@ -79,6 +79,7 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 import Login from './components/Login';
 import Home from './components/Home';
+import NewSessionForm from './components/NewSessionForm';
 
 class App extends React.Component {
   state = {
@@ -93,10 +94,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar /> 
-          {this.state.pageShown === 'home' ? <Home /> : <Login changePageShown={this.changePageShown} pageShown={this.state.pageShown} />}      
+          {/* {this.state.pageShown === 'home' ? <Home /> : <Login changePageShown={this.changePageShown} pageShown={this.state.pageShown} />}       */}
         <Switch>
           <Route exact path="/" render={() => <Home />}/>
           <Route path="/about" render={() => <About />}/>
+          <Route path="/sessions" render={() => <NewSessionForm />}/>
           <Route path="/login" component={Login}/>
         </Switch>
       </div>
