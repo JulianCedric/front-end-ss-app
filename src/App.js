@@ -87,25 +87,37 @@ import NewSessionForm from './components/NewSessionForm';
 import Sessions from './components/Sessions';
 
 class App extends React.Component {
-  state = {
-    pageShown: 'home',
+  state = {  
+    view: 'home',
+    sessions: []
   }
 
-  changePageShown = pageShown => {
-    this.setState({ pageShown })
+  x = sessions => {
+  this.setState({sessions}, () => console.log(sessions))
+  }
+
+  handleNewSession = (newSession) => {
+    this.setState({sessions: [...this.state.sessions, newSession]})
+  }
+
+  changeView = (view) => {
+    this.setState({view})
+    // same as 'this.setState({this.state.view: view})'
   }
 
   render(){
     return (
       <div className="App">
-        <Navbar /> 
+        <Navbar changeView={this.changeView} view={this.state.view} /> 
           {/* {this.state.pageShown === 'home' ? <Home /> : <Login changePageShown={this.changePageShown} pageShown={this.state.pageShown} />}       */}
         <Switch>
-          <Route exact path="/" render={() => <Home />}/>
-          <Route path="/about" render={() => <About />}/>
-          <Route exact path="/sessions" render={() => <Sessions />}/>
-          <Route path="/sessions/new" render={() => <NewSessionForm />}/>
-          <Route path="/login" component={Login}/>
+          <Route exact path="/about" render={(props) => <About {...props}/>}/>
+
+          <Route exact path="/sessions/new" render={(props) => <NewSessionForm handleNewSession={this.handleNewSession} {...props}/>}/>
+
+          <Route exact path="/sessions" render={(props) => <Sessions {...props}/>}/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/" render={(props) => <Home {...props} x={this.x} />}/>
         </Switch>
       </div>
     );

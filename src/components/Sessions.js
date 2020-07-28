@@ -2,14 +2,21 @@ import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 import SessionDetails from "./SessionDetails";
 
-const Sessions = props => {
+class Sessions extends React.Component {
+    render(){
+        console.log(this.props)
+        return (
+            <div className="sessions">
+                <h2 className="mediumPurpleText">Sessions</h2>
+                <h3>Sessions Table Goes Here</h3>
+            </div>
+        );
+    };
+}
 
-    let { sessions } = props;
+export default Sessions;
 
-  return (
-    <div className="sessions">
-        <h2 className="mediumPurpleText">Sessions</h2>
-    {/* <table>
+{/* <table>
         <thead>
             <tr>
                 <td>Date</td>
@@ -20,15 +27,3 @@ const Sessions = props => {
             </tr>
         </thead>
         <tbody> */}
-
-
-
-            <h1>Sessions Table Goes Here</h1>
-            {/* {sessions.map(session => <SessionDetails key={session.id} {...session} match={props.match} push={props.history.push}/>)} */}
-        {/* </tbody> */}
-    {/* </table> */}
-</div>
-  );
-}
-
-export default Sessions
