@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
-import SessionsContainer from './SessionsContainer';
+import Sessions from './Sessions';
 import NewSessionForm from './NewSessionForm';
 
 const API = "http://localhost:3001/api/v1/sessions.json"
@@ -27,7 +27,7 @@ class Home extends React.Component {
             <div className="home">
                 <h2 className="mediumPurpleText">Home</h2>
                 <Switch> 
-                    <Route path="/sessions" render={(routerProps) => <SessionsContainer sessions={this.state.sessions} {...routerProps}/>}/>
+                    <Route path="/sessions" render={(routerProps) => <Sessions sessions={this.state.sessions} {...routerProps}/>}/>
                     <Route path="/sessions" render={() => <NewSessionForm />}/>
                 </Switch>
             </div>

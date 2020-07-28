@@ -84,6 +84,7 @@ import About from './components/About';
 import Login from './components/Login';
 import Home from './components/Home';
 import NewSessionForm from './components/NewSessionForm';
+import Sessions from './components/Sessions';
 
 class App extends React.Component {
   state = {
@@ -102,6 +103,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <Home />}/>
           <Route path="/about" render={() => <About />}/>
+          <Route exact path="/sessions" render={() => <Sessions />}/>
           <Route path="/sessions/new" render={() => <NewSessionForm />}/>
           <Route path="/login" component={Login}/>
         </Switch>
