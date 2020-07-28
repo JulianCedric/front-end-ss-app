@@ -1,3 +1,7 @@
+// 7/28 - JP Notes: Fixed errors w/ db. Finishing up C, U, D actions. 
+
+// 7/27 - JP Notes: Reviewed routes labs .. to reconfigure routes (components tmrw).
+
 // 7/26 - JP Notes: Slight pivot in app focus - 'info-gathering app' (in progress) 
 
 // USER / CUSTOMER JOURNEY: 
@@ -98,7 +102,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <Home />}/>
           <Route path="/about" render={() => <About />}/>
-          <Route path="/sessions" render={() => <NewSessionForm />}/>
+          <Route path="/sessions/new" render={() => <NewSessionForm />}/>
           <Route path="/login" component={Login}/>
         </Switch>
       </div>

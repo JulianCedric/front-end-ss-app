@@ -1,3 +1,5 @@
+// 
+
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 import SessionsContainer from './SessionsContainer';
@@ -24,7 +26,7 @@ class Home extends React.Component {
         return (
             <div className="home">
                 <h2 className="mediumPurpleText">Home</h2>
-                <Switch>
+                <Switch> 
                     <Route path="/sessions" render={(routerProps) => <SessionsContainer sessions={this.state.sessions} {...routerProps}/>}/>
                     <Route path="/sessions" render={() => <NewSessionForm />}/>
                 </Switch>

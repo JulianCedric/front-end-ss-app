@@ -7,12 +7,17 @@ const SessionDetails = props => {
     return (
         <div className="mediumPurpleText" className="session-details">
             <h2 className="mediumPurpleText">Session Info:</h2>
+            <h4>Page Under Construction Until 7/28..</h4>
             <div>
-                <p>Date: {date}</p>
-                <p>Pre-Assessment Completed? </p>
-                <p>Notes: </p>
-                <p>{comment}</p>
-                <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button> 
+                <tr>
+                    <td>{date}</td>
+                    <td>Student</td>
+                    <td>My Notes</td>
+                    <td> + </td>
+                    <td> - </td>
+                    <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button> 
+                </tr>
+
             </div>
         </div>
     );
