@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 
 class NewSessionForm extends React.Component {
     state = {
@@ -15,7 +15,7 @@ class NewSessionForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        fetch("http://localhost:3001/sessions", {
+        fetch("http://localhost:3001/api/v1/sessions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

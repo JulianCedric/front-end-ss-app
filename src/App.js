@@ -112,10 +112,8 @@ class App extends React.Component {
           {/* {this.state.pageShown === 'home' ? <Home /> : <Login changePageShown={this.changePageShown} pageShown={this.state.pageShown} />}       */}
         <Switch>
           <Route exact path="/about" render={(props) => <About {...props}/>}/>
-
           <Route exact path="/sessions/new" render={(props) => <NewSessionForm handleNewSession={this.handleNewSession} {...props}/>}/>
-
-          <Route exact path="/sessions" render={(props) => <Sessions {...props}/>}/>
+          <Route exact path="/sessions" render={(props) => <Sessions sessions={this.state.sessions} {...props}/>}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/" render={(props) => <Home {...props} x={this.x} />}/>
         </Switch>

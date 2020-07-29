@@ -4,6 +4,8 @@ const SessionDetails = props => {
 
     let { push, id, date, preAssessmentCompletionStatus, comment } = props;
 
+    console.log(props)
+
     return (
         <div className="mediumPurpleText" className="session-details">
             <h2 className="mediumPurpleText">Session Info:</h2>
