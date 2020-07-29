@@ -4,16 +4,12 @@ const SessionDetails = props => {
 
     let { push, path, id, deleteSession, date, student, tutor, preAssessmentCompletionStatus, comment } = props;
 
-    console.log(props)
-
-    console.log(props.name)
-
-    console.log(props.deleteSession)
+    console.log(props.id)
 
     return (
         <>
             <div className="mediumPurpleText" className="session-details">
-
+{/*  */}
                 <ul>
                 <p>
                     {date}
@@ -25,10 +21,10 @@ const SessionDetails = props => {
                     {props.comment}
                 </p>
                 <p>
-                     + 
+                    {props.name === "session" && <button onClick={()=>props.updateStatus(id)}> + </button>}
                 </p>
                 <p>    
-                    <button onClick={()=>props.deleteSession(props.id)}> - </button>
+                    {props.name === "session" && <button onClick={()=>props.deleteSession(id)}> - </button>}
                 </p>
                 </ul>
             </div>

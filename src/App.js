@@ -26,10 +26,11 @@ class App extends React.Component {
     sessions: [],
     students: [],
     tutors: [],
+    completionStatus: false
   }
 
 changeSessionsState = sessions => {
-    this.setState({sessions})
+    this.setState({sessions: sessions})
   }
 
 changeStudentsState = students => {
@@ -44,37 +45,42 @@ changeTutorsState = tutors => {
     this.setState({sessions: [...this.state.sessions, newSession]})
   }
 
-  // updateStatus = (sessionId, status) => {
-  //   fetch(`http://localhost:3005/api/v1/sessions/${sessionId}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json"
-  //     }, 
-  //     body: JSON.stringify( {
-  //       preAssessmentCompletionStatus: true
-  //     } )
-  //   })
-  //   .then(resp => resp.json())
-  //   // .then(sessionWithUpdatedStatus => { 
-  //     // conditional (if the id of the session (session.id) equals the first argument, then.. )
-  //   //   this.setState({completionStatus: sessionWithUpdated})
-  //   // })
-  // }
+  updateStatus = (sessionId, preAssessmentCompletionStatus) => {
+    fetch(`http://localhost:3005/sessions/${sessionsId}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify( {
+      preAssessmentCompletionStatus: true
+      })
+      })
+        .then(resp => resp.json())
+        .then(updatedSession => {
+          let newSessionArray = this.state.sessions.map(session => {
+            if (session.id === sessionId) {
+            return updatedSession
+        }
+          return session
+      })
+  }
 
   deleteSession = id => {
+    console.log(id)
     fetch(`http://localhost:3005/api/v1/sessions/${id}`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
         Accept: 'application/json'
-      }
+      },
     })
-        .then(resp =>resp.json())
-        .then(()=>{
+      .then(resp =>resp.json())
+      .then(()=>{
             let newSessionsArray = this.state.sessions.filter(session=> session.id !== id)
             this.setState({session: newSessionsArray})
         })
+    
 
     }
 
