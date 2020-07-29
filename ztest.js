@@ -4,6 +4,93 @@
 
 
 
+
+import React from "react";
+
+const Transaction = (props) => {
+  return (
+    <tr>
+      <td>{props.date}</td>
+      <td>{props.description}</td>
+      <td>{props.category}</td>
+      <td>{props.amount}</td>
+    </tr>
+  );
+};
+
+export default Transaction;
+
+
+
+// 7/22 JP Notes: MUCH cleaner code - easier to pass props (eliminated one level by moving state / functions / state-->props from App.js to AccountContainer.js)
+  // also: additional notes below (from old version earlier today)
+
+  import React from "react";
+  import Transaction from "./Transaction";
+  
+  const TransactionsList = (props) => {
+    return (
+      <table className="ui celled striped padded table">
+        <tbody>
+          <tr>
+            <th>
+              <h3 className="ui center aligned header">Date</h3>
+            </th>
+            <th>
+              <h3 className="ui center aligned header">Session</h3>
+            </th>
+            <th>
+              <h3 className="ui center aligned header">Student</h3>
+            </th>
+            <th>
+              <h3 className="ui center aligned header">Notes</h3>
+            </th>
+          </tr>
+          {props.transactions.map(transaction=>(<Transaction key={transaction.id} {...transaction}/>))}
+        </tbody>
+      </table>
+    );
+  };
+  
+  export default TransactionsList;
+  
+  /////////////////////////////////////////////////
+  
+  // 7/22 JP Notes: TransactionsList was originally a functional component, but I changed it: 
+  
+  // import React from "react";
+  // import Transaction from "./Transaction";
+  
+  // const TransactionsList = () => {
+  //   return (
+  //     <table className="ui celled striped padded table">
+  //       <tbody>
+  //         <tr>
+  //           <th>
+  //             <h3 className="ui center aligned header">Date</h3>
+  //           </th>
+  //           <th>
+  //             <h3 className="ui center aligned header">Description</h3>
+  //           </th>
+  //           <th>
+  //             <h3 className="ui center aligned header">Category</h3>
+  //           </th>
+  //           <th>
+  //             <h3 className="ui center aligned header">Amount
+  //             </h3>
+  //           </th>
+  //         </tr>
+  //         {/* render Transactions here */}
+  //       </tbody>
+  //     </table>
+  //   );
+  // };
+  
+  // export default TransactionsList;
+  
+
+
+
 create_table "sessions", id: false, force: :cascade do |t|
 t.bigint "tutor_id", null: false
 t.bigint "student_id", null: false
@@ -233,7 +320,6 @@ end
 
 // // App.js changes: 
 
-// // Commented out changeView()
 
 // <Route exact path="/sessions/new" render={(props) => <NewSessionForm handleNewSession={this.handleNewSession} {...props}/>}/>
 

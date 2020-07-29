@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = props => {
 
-    const { changeView, view } = props;
+    const { view } = props;
 
     return (
         <div className="navbar">
@@ -13,7 +13,7 @@ const Navbar = props => {
             <Link to="/about" className="link">About</Link>
             <Link to="/sessions" className="link">Sessions</Link>
             <Link to="/sessions/new" className="link">New Session</Link>
-            <Link to="/login" className="link" changeView={changeView} view={view}>Login</Link>
+            <Link to="/login" className="link" view={view}>Login</Link>
         </div>
     )
 }

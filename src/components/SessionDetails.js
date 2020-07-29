@@ -2,26 +2,26 @@ import React from 'react';
 
 const SessionDetails = props => {
 
-    let { push, id, date, student, preAssessmentCompletionStatus, comment } = props;
+    let { push, path, id, date, student, preAssessmentCompletionStatus, comment } = props;
 
-    console.log(props)
+
 
     return (
+        <>
         <div className="mediumPurpleText" className="session-details">
-            <h2 className="mediumPurpleText">Session Info:</h2>
-            <h4>Page Under Construction Until 7/28..</h4>
-            <div>
-                <tr>
-                    <td>{date}</td>
-                    <td>{student}</td>
-                    <td>My Notes</td>
-                    <td> + </td>
-                    <td> - </td>
-                    <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button> 
-                </tr>
 
-            </div>
         </div>
+
+
+            <tr>
+                <td>{date}</td>
+                <td>{student}</td>
+                <td>{comment}</td>
+                <td> + </td>
+                <td onClick={this.handleClick}> - </td>
+                {/* <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button>  */}
+            </tr>
+            </>
     );
 }
  

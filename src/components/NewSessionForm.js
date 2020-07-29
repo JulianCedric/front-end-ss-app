@@ -9,7 +9,6 @@ class NewSessionForm extends React.Component {
     state = {
         tutor_id: "",
         student_id: "",
-
         date: "",
         comment: ""
     }
@@ -79,8 +78,6 @@ class NewSessionForm extends React.Component {
 
     render(){
         let { tutor_id, student_id, date, comment } = this.state;
-
-        // console.log(this.props.changeStudentsState)
 
         return (
             <div className="simple-flex-col">
