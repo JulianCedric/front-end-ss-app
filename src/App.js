@@ -86,6 +86,8 @@ import Home from './components/Home';
 import NewSessionForm from './components/NewSessionForm';
 import Sessions from './components/Sessions';
 
+const API = "http://localhost:3000/api/v1/sessions"
+
 class App extends React.Component {
   state = {  
     view: 'home',
@@ -94,7 +96,7 @@ class App extends React.Component {
     tutors: []
   }
 
-  changeSessionsState = sessions => {
+changeSessionsState = sessions => {
     this.setState({sessions})
   }
 
@@ -110,6 +112,23 @@ changeTutorsState = tutors => {
     this.setState({sessions: [...this.state.sessions, newSession]})
   }
 
+  deleteSession = id => {
+    // console.log("pre-fetch")
+    fetch(API, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Accept: 'application/json'
+      }
+    })
+        .then(resp =>resp.json())
+        .then(()=>{
+            let newSessionsArray = this.state.sessions.filter(session=> session.id !== id)
+            this.setState({session: newSessionsArray})
+        })
+
+    }
+
   render(){
 
     // console.log(this.state)
@@ -120,7 +139,7 @@ changeTutorsState = tutors => {
         <Switch>
           <Route exact path="/about" render={(props) => <About {...props}/>}/>
           <Route exact path="/sessions/new" render={(props) => <NewSessionForm students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} handleNewSession={this.handleNewSession} {...props}/>}/>
-          <Route exact path="/sessions" render={(props) => <Sessions sessions={this.state.sessions} {...props}/>}/>
+          <Route exact path="/sessions" render={(props) => <Sessions sessions={this.state.sessions} students={this.state.students} tutors={this.state.tutors} deleteSession={this.deleteSession} {...props}/>}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/" render={(props) => <Home {...props} x={this.x} />}/>
         </Switch>

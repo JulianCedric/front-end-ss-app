@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch } from 'react-router-dom'
 
-const API = "http://localhost:3001/api/v1/sessions"
-const API_Students = "http://localhost:3001/api/v1/students"
-const API_Tutors = "http://localhost:3001/api/v1/tutors"
+const API = "http://localhost:3005/api/v1/sessions"
+const API_Students = "http://localhost:3005/api/v1/students"
+const API_Tutors = "http://localhost:3005/api/v1/tutors"
 
 class NewSessionForm extends React.Component {
     state = {
@@ -39,25 +39,24 @@ class NewSessionForm extends React.Component {
         this.fetchTutors()
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     handleSubmit = e => {
         e.preventDefault()
-        // console.log("pre-fetch")
-        fetch("http://localhost:3001/api/v1/sessions", {
+        console.log(this.state)
+
+        fetch("http://localhost:3005/api/v1/sessions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            Accept: "application/json"
           },
           body: JSON.stringify({
-              tutor_id: parseInt(this.state.tutor_id),
-              student_id: parseInt(this.state.student_id),
+              tutor_id: this.state.tutor_id,
+              student_id: this.state.student_id,
               preAssessmentCompletionStatus: false,
               date: this.state.date,
               comment: this.state.comment 
@@ -85,18 +84,12 @@ class NewSessionForm extends React.Component {
                 <h2 className="mediumPurpleText">Create a New Session</h2>
 
                 <form onSubmit={this.handleSubmit}>
-
-
-                    <form action="/action_page.php">
-                        <label>Select Tutor:</label><br></br>
+                    <label>Select Tutor:</label><br></br>
                         <select name="tutor_id" id="tutor" value={this.state.tutors} onChange={this.handleChange}>
                             {this.props.tutors.map((tutor, index) => 
                                 <option value={tutor.id} key={index} > {tutor.name} </option>
                             )};
-                        </select>                    
-                    </form><br></br>
-
-                    <form action="/action_page.php">
+                        </select><br></br>         <br></br>           
                     <label>Select Student:</label><br></br>
                         <select name="student_id" id="students" value={this.state.students} onChange={this.handleChange}>
                             {this.props.students.map((student, index) => 
@@ -104,8 +97,8 @@ class NewSessionForm extends React.Component {
                             )};
                         </select>                    
 
-                    </form>
                     <br></br>
+                    
 
                     <input name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br><br></br>
 

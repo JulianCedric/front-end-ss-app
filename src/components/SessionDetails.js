@@ -2,26 +2,34 @@ import React from 'react';
 
 const SessionDetails = props => {
 
-    let { push, path, id, date, student, preAssessmentCompletionStatus, comment } = props;
+    let { push, path, id, deleteSession, date, student, tutor, preAssessmentCompletionStatus, comment } = props;
 
+    console.log(props)
 
+    console.log(props.name)
+
+    console.log(props.deleteSession)
 
     return (
         <>
-        <div className="mediumPurpleText" className="session-details">
-
-        </div>
-
-
-            <tr>
-                <td>{date}</td>
-                <td>{student}</td>
-                <td>{comment}</td>
-                <td> + </td>
-                <td onClick={this.handleClick}> - </td>
-                {/* <button onClick={() => push(`${props.match.path}/${id}`)}>Home</button>  */}
-            </tr>
-            </>
+            <div className="mediumPurpleText" className="session-details">
+                <tr>
+                    <td>{date}</td>
+                </tr>
+                <tr>
+                    <td>{props.name}</td>
+                </tr>
+                <tr>
+                    <td>{props.comment}</td>
+                </tr>
+                <tr>
+                    <td> + </td>
+                </tr>
+                <tr>    
+                    <button onClick={()=>props.deleteSession(props.id)}> - </button>
+                </tr>
+            </div>
+        </>
     );
 }
  

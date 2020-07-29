@@ -5,9 +5,9 @@ import { Route, Switch} from 'react-router-dom';
 import Sessions from './Sessions';
 import NewSessionForm from './NewSessionForm';
 
-const API = "http://localhost:3001/api/v1/sessions"
-// const API_Students = "http://localhost:3001/api/v1/students"
-// const API_Tutors = "http://localhost:3001/api/v1/tutors"
+const API = "http://localhost:3000/api/v1/sessions"
+const API_Students = "http://localhost:3000/api/v1/students"
+const API_Tutors = "http://localhost:3000/api/v1/tutors"
 
 class Home extends React.Component {
     // state moved to App.js re: NewSessionForm (redirect)
