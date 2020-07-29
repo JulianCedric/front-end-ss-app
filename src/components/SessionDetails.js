@@ -2,7 +2,7 @@ import React from 'react';
 
 const SessionDetails = props => {
 
-    let { push, id, date, preAssessmentCompletionStatus, comment } = props;
+    let { push, id, date, student, preAssessmentCompletionStatus, comment } = props;
 
     console.log(props)
 
@@ -13,7 +13,7 @@ const SessionDetails = props => {
             <div>
                 <tr>
                     <td>{date}</td>
-                    <td>Student</td>
+                    <td>{student}</td>
                     <td>My Notes</td>
                     <td> + </td>
                     <td> - </td>

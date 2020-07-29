@@ -94,15 +94,15 @@ class App extends React.Component {
     tutors: []
   }
 
-  x = sessions => {
-  this.setState({sessions}, () => console.log(sessions))
+changeSessionsState = sessions => {
+    this.setState({sessions})
   }
 
-  y = students => {
+changeStudentsState = students => {
     this.setState({students})
   }
 
-  z = tutors => {
+changeTutorsState = tutors => {
     this.setState({tutors})
   }
 
@@ -110,16 +110,17 @@ class App extends React.Component {
     this.setState({sessions: [...this.state.sessions, newSession]})
   }
 
- 
-
   render(){
+
+    console.log(this.state)
+
     return (
       <div className="App">
         <Navbar changeView={this.changeView} view={this.state.view} /> 
           {/* {this.state.pageShown === 'home' ? <Home /> : <Login changePageShown={this.changePageShown} pageShown={this.state.pageShown} />}       */}
         <Switch>
           <Route exact path="/about" render={(props) => <About {...props}/>}/>
-          <Route exact path="/sessions/new" render={(props) => <NewSessionForm students={this.state.students} tutors={this.state.tutors} handleNewSession={this.handleNewSession} {...props}/>}/>
+          <Route exact path="/sessions/new" render={(props) => <NewSessionForm students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} handleNewSession={this.handleNewSession} {...props}/>}/>
           <Route exact path="/sessions" render={(props) => <Sessions sessions={this.state.sessions} {...props}/>}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/" render={(props) => <Home {...props} x={this.x} />}/>

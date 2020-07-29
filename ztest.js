@@ -1,3 +1,42 @@
+
+
+
+
+
+
+create_table "sessions", id: false, force: :cascade do |t|
+t.bigint "tutor_id", null: false
+t.bigint "student_id", null: false
+t.string "date"
+t.boolean "preAssessmentCompletionStatus"
+t.text "comment"
+t.datetime "created_at", precision: 6, null: false
+t.datetime "updated_at", precision: 6, null: false
+end
+
+
+<tr>
+                <th>Date</th>
+                <th>Student</th>
+                <th>My Notes</th>
+                <th> + </th>
+                <th> - </th>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 7/28 - Checklist
 
 // Display about page content onto homepage 

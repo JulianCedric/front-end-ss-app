@@ -15,19 +15,21 @@ class Home extends React.Component {
     fetchSessions = () => {
         fetch(API)
         .then(resp => resp.json())
-        .then(sessions => this.props.x)
+        .then(sessions => this.props.changeSessionsState(sessions))
     }
 
     fetchStudents = () => {
         fetch(API_Students)
         .then(resp => resp.json())
-        .then(sessions => this.props.x)
+        .then(students => {
+            this.props.changeStudentsState(students) 
+            console.log(students)})
     }
 
     fetchTutors = () => {
         fetch(API_Tutors)
         .then(resp => resp.json())
-        .then(sessions => this.props.x)
+        .then(tutors => this.props.changeTutorsState(tutors))
     }
 
     componentDidMount(){
