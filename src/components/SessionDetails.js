@@ -13,51 +13,27 @@ const SessionDetails = props => {
     return (
         <>
             <div className="mediumPurpleText" className="session-details">
-                <tr>
-                    <td>{date}</td>
-                </tr>
-                <tr>
-                    <td>{props.name}</td>
-                </tr>
-                <tr>
-                    <td>{props.comment}</td>
-                </tr>
-                <tr>
-                    <td> + </td>
-                </tr>
-                <tr>    
+
+                <ul>
+                <p>
+                    {date}
+                </p>
+                <p>
+                    {props.name}
+                </p>
+                <p>
+                    {props.comment}
+                </p>
+                <p>
+                     + 
+                </p>
+                <p>    
                     <button onClick={()=>props.deleteSession(props.id)}> - </button>
-                </tr>
+                </p>
+                </ul>
             </div>
         </>
     );
 }
  
 export default SessionDetails;
-
-// class SessionDetails extends React.Component {
-//     render() { 
-//         return (
-//             <div className="mediumPurpleText" className="session">
-//                 <h3>Session Info:</h3>
-//                 <div>
-                    
-//                     <p>Date: {this.props.date}</p>
-    
-//                     <p>Time: </p>
-    
-//                     <p>Student: </p>
-    
-//                     <p>School: </p>
-    
-//                     <p>Parent: </p>
-    
-//                     {/* <p>Your Notes: {comment}</p> */}
-    
-//                 </div>
-//             </div>
-//         );
-//     }
-// }
- 
-// export default SessionDetails;

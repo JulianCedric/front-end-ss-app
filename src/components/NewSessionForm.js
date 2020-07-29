@@ -39,15 +39,11 @@ class NewSessionForm extends React.Component {
         this.fetchTutors()
     }
 
-
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
-
-
 
     handleSubmit = e => {
         e.preventDefault()
         console.log(this.state)
-
         fetch("http://localhost:3005/api/v1/sessions", {
           method: "POST",
           headers: {
@@ -64,69 +60,43 @@ class NewSessionForm extends React.Component {
         })
           .then(resp => resp.json())
           .then(newSession => {this.props.handleNewSession(newSession) 
-        //   console.log("fetchhuiaweitugaw;eiutg")
             this.setState({
-              date: "",
-              comment: "", 
+                tutor_id: "",
+                student_id: "",
+                date: "",
+                comment: ""
             })}
         )
         this.props.history.push('/')
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     render(){
         let { tutor_id, student_id, date, comment } = this.state;
 
         return (
             <div className="simple-flex-col">
-
                 <h2 className="mediumPurpleText">Create a New Session</h2>
-
                 <form onSubmit={this.handleSubmit}>
                     <label>Select Tutor:</label><br></br>
-                        <select name="tutor_id" id="tutor" value={this.state.tutors} onChange={this.handleChange}>
-                            {this.props.tutors.map((tutor, index) => 
-                                <option value={tutor.id} key={index} > {tutor.name} </option>
-                            )};
-                        </select><br></br>         <br></br>           
+                    <select name="tutor_id" id="tutor" value={this.state.tutors} onChange={this.handleChange}>
+                        {this.props.tutors.map((tutor, index) => 
+                            <option value={tutor.id} key={index} > {tutor.name} </option>
+                        )};
+                    </select><br></br><br></br>           
                     <label>Select Student:</label><br></br>
-                        <select name="student_id" id="students" value={this.state.students} onChange={this.handleChange}>
-                            {this.props.students.map((student, index) => 
-                                <option value={student.id} key={index} > {student.name} </option>
-                            )};
-                        </select>                    
-
+                    <select name="student_id" id="students" value={this.state.students} onChange={this.handleChange}>
+                        {this.props.students.map((student, index) => 
+                            <option value={student.id} key={index} > {student.name} </option>
+                        )};
+                    </select>                    
                     <br></br>
-                    
-
                     <input name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br><br></br>
-
                     <textarea name="comment" placeholder="Your Notes.. " value={comment} onChange={this.handleChange}/><br></br><br></br>
-
                     <button type="submit">Submit</button>
-
-                    </form>
-
-
+                </form>
             </div>
         )
     }
 }
 
-export default NewSessionForm; 
-
-{/* 
-                    <form onSubmit={this.handleSubmit}>
-                        <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
-                        <textarea name="comment" placeholder="Your Notes.. " value={comment} onChange={this.handleChange}/><br></br><br></br>
-                        <button type="submit">Submit</button>
-                    </form> */}
- {/* <input name="time" placeholder="Time" value={this.state.time} onChange={this.handleChange}/><br></br> */}
-
-                {/* <input name="student" placeholder="Student's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
-                {/* <input name="school" placeholder="School Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
-
-                {/* <input name="parent" placeholder="Parent's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}
-                {/* <input name="preAssessmentCompletionStatus" placeholder="Pre-Assessment Status" value={this.state.} onChange={this.handleChange}/><br></br> */}
-                    
+export default NewSessionForm;

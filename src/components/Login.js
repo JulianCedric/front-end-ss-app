@@ -28,9 +28,7 @@ class Login extends React.Component {
                     <input type="password" name="password" placeholder="Password" value= {this.state.password} onChange={this.handleChange}/><br></br><br></br>
                     <button type="submit">Submit</button>
                 </form>
-                {/* <Switch>
-                    <Route exact path="/" render={() => <Home />}/>
-                </Switch> */}
+
             </div>
         )
     }
