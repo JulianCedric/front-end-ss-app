@@ -41,17 +41,24 @@ class NewSessionForm extends React.Component {
 
     render(){
         let { date, comment } = this.state;
+
+        console.log(this.props)
+
         return (
             <div className="simple-flex-col">
 
                 <h2 className="mediumPurpleText">Create a New Session</h2>
-                    <form onSubmit={this.handleSubmit}>
-                        <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
-                        <textarea name="comment" placeholder="Your Notes.. " value={comment} onChange={this.handleChange}/><br></br><br></br>
-                        <button type="submit">Submit</button>
-                    </form>
 
+                    <form action="/action_page.php">
+                        <select name="cars" id="cars">
+                        {this.props.students.map((student, index) => 
+                            <option value={student.id} key={index} > {student.name} </option>
+                        )};
 
+                        </select>
+                    
+                    <input type="submit" value="Submit"/>
+                </form>
             </div>
         )
     }
@@ -59,6 +66,12 @@ class NewSessionForm extends React.Component {
 
 export default NewSessionForm; 
 
+{/* 
+                    <form onSubmit={this.handleSubmit}>
+                        <textarea name="date" placeholder="" value={date} onChange={this.handleChange}/><br></br>
+                        <textarea name="comment" placeholder="Your Notes.. " value={comment} onChange={this.handleChange}/><br></br><br></br>
+                        <button type="submit">Submit</button>
+                    </form> */}
  {/* <input name="time" placeholder="Time" value={this.state.time} onChange={this.handleChange}/><br></br> */}
 
                 {/* <input name="student" placeholder="Student's Name" value={this.state.} onChange={this.handleChange}/><br></br> */}

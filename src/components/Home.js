@@ -5,16 +5,37 @@ import { Route, Switch} from 'react-router-dom';
 import Sessions from './Sessions';
 import NewSessionForm from './NewSessionForm';
 
-const API = "http://localhost:3001/api/v1/sessions.json"
+const API = "http://localhost:3001/api/v1/sessions"
+const API_Students = "http://localhost:3001/api/v1/students"
+const API_Tutors = "http://localhost:3001/api/v1/tutors"
 
 class Home extends React.Component {
     // state moved to App.js re: NewSessionForm (redirect)
 
-    componentDidMount(){
+    fetchSessions = () => {
         fetch(API)
         .then(resp => resp.json())
         .then(sessions => this.props.x)
     }
+
+    fetchStudents = () => {
+        fetch(API_Students)
+        .then(resp => resp.json())
+        .then(sessions => this.props.x)
+    }
+
+    fetchTutors = () => {
+        fetch(API_Tutors)
+        .then(resp => resp.json())
+        .then(sessions => this.props.x)
+    }
+
+    componentDidMount(){
+        this.fetchSessions();
+        this.fetchStudents();
+        this.fetchTutors()
+    }
+
 
     // getData(){
     //     return this.componentDidMount()
