@@ -13,9 +13,16 @@ class Home extends React.Component {
         sessions: [],
         students: [],
         tutors: [],
-        completionStatus: false
+        completionStatus: false,
         filter: "",
+        search: ""
       }
+
+    
+
+    filterBy = () => {
+        return this.state.students.filter(student => student.name.toLowerCase()includes(this.state.filter.toLowerCase()))
+    }
 
     changeSessionsState = sessions => {
         this.setState({sessions}, console.log(sessions))
