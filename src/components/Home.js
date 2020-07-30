@@ -18,11 +18,17 @@ class Home extends React.Component {
         search: ""
       }
 
-    
+/////// 
 
     filterBy = () => {
-        return this.state.students.filter(student => student.name.toLowerCase()includes(this.state.filter.toLowerCase()))
+        return this.state.students.filter(student => student.name.toLowerCase().includes(this.state.filter.toLowerCase()))
     }
+
+    handleSearch = e => {
+        this.setState({filter: e.target.value})
+    }
+
+/////// 
 
     changeSessionsState = sessions => {
         this.setState({sessions}, console.log(sessions))
@@ -110,6 +116,11 @@ class Home extends React.Component {
         return (
             <div className="home">
                 <h2 className="mediumPurpleText">Home</h2>
+
+                <div>
+                    <input name="search" placeHolder="Search Students" value={this.state.search} onChange={this.handleSearch} />
+                </div>
+
                 <div className="About">
                     <p> AP Life
                         Aware and Prepared for Life Beyond the Classroom.
