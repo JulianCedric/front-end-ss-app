@@ -3,153 +3,44 @@ import { Route, Switch} from 'react-router-dom';
 import NewSessionForm from './NewSessionForm';
 import SessionsContainer from './SessionsContainer';
 
-const API = "http://localhost:3005/api/v1/sessions"
-const API_Students = "http://localhost:3005/api/v1/students"
-const API_Tutors = "http://localhost:3005/api/v1/tutors"
-
 class Home extends React.Component {
-    state = {  
-        view: 'home',
-        sessions: [],
-        students: [],
-        tutors: [],
-        completionStatus: false,
-        filter: ""
-      }
+    // Deleted the About component - contents to be moved here, below, in Home.js.
+    // Next: Render list of sessions on homepage as well.
 
-/////// 
+    state = {
+        search: "",
+        
+    }
 
     filterBy = () => {
         return this.state.students.filter(student => student.name.toLowerCase().includes(this.state.filter.toLowerCase()))
-    } 
-
+      } 
+      
     handleSearch = e => {
         this.setState({filter: e.target.value})
     }
 
-/////// 
-
-    changeSessionsState = sessions => {
-        this.setState({sessions}, console.log(sessions))
-    }
-      
-    changeStudentsState = students => {
-        this.setState({students})
-    }
-      
-    changeTutorsState = tutors => {
-        this.setState({tutors})
+    handleClick = e => {
+        
     }
 
-    fetchSessions = () => {
-        fetch(API)
-        .then(resp => resp.json())
-        .then(sessions => {
-            this.changeSessionsState(sessions)
-            console.log(sessions)})
-    }
-
-    fetchStudents = () => {
-        fetch(API_Students)
-        .then(resp => resp.json())
-        .then(students => {
-            this.changeStudentsState(students) 
-            console.log(students)})
-    }
-
-    fetchTutors = () => {
-        fetch(API_Tutors)
-        .then(resp => resp.json())
-        .then(tutors => {
-            this.changeTutorsState(tutors)
-            console.log(tutors)})
-    }
-
-    componentDidMount(){
-        this.fetchSessions();
-        this.fetchStudents();
-        this.fetchTutors()
-    }
-
-    handleNewSession = (newSession) => {
-        this.setState({sessions: [...this.state.sessions, newSession]})
-      }
-    
-    updateStatus = (sessionId, preAssessmentCompletionStatus) => {
-    fetch(`http://localhost:3005/sessions/${sessionId}`, {
-        method: 'PATCH',
-        headers: {
-            "Content-Type": "application/json",
-        Accept: "application/json"
-        },
-        body: JSON.stringify( {
-            preAssessmentCompletionStatus: true
-        })
-        })
-        .then(resp => resp.json())
-        .then(updatedSession => {
-            let newSessionArray = this.state.sessions.map(session => {
-            if (session.id === sessionId) {
-            return updatedSession
-        }
-            return session
-        })
-      })}
-    
-    deleteSession = id => {
-    fetch(`http://localhost:3005/api/v1/sessions/${id}`, {
-        method: 'DELETE',
-        headers: {
-        "Content-Type": "application/json",
-        Accept: 'application/json'
-        },
-    })
-        .then(resp =>resp.json())
-        .then(() => {
-            let newSessionsArray = this.state.sessions.filter(session=> session.id !== id)
-            this.setState({session: newSessionsArray})
-        })
-    }
 
     render() { 
         return (
             <div className="home">
                 <h2 className="mediumPurpleText">Home</h2>
-
-                <div>
-                    <input name="search" placeHolder="Search Students" value={this.state.search} onChange={this.handleSearch} />
-                </div>
-
-                <div className="About">
-                    <p> AP Life
-                        Aware and Prepared for Life Beyond the Classroom.
-                        What is AP Life?
-                        While the education system provides the academic preparation students need to get into college,
-                        The AP Life Program is a supplementary tutoring service that provides the missing non-academic
-                        piece to ensure students are fully ‘aware and prepared’ for what comes next after high school
-                        graduation. Upon completing the program, your high school student will:
-                        1. Have the proper mindset going into college
-                        2. Be able to handle the responsibilities of early adulthood
-                        3. Make wiser, more well-informed decisions
-                        How Does It Work?
-                        ● 4 one-hour sessions scheduled over 1 month 
-                        ● Sessions are in-person (typically at local coffee shops, determined by parents)
-                        ● After each session, tutors will send parents a brief email that summarizes session notes and
-                        highlights
-                        Why Enroll?
-                        By the time students are off to college, the chance for parents and educators to leave a significant
-                        impact on their outlook and approach to life will have already passed. You may think of The AP Life
-                        Program as a ‘crash course’ that shortens your child’s learning curve to being a mature & responsible
-                        independent adult. Furthermore, our tutors are specially trained to serve as both teacher and mentor
-                        to your high school student during this critical transition period in their development. Within the
-                        familiar 1:1 tutoring environment, students receive the individualized attention and mentorship
-                        needed to effectively grasp and apply the program’s traditionally adult-level content.
-                    </p>
-                </div>
-                <Switch> 
-                    <Route exact path="/sessions/new" render={(props) => <NewSessionForm sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} handleNewSession={this.handleNewSession} {...props}/>}/>
-                    <Route exact path="/sessions" render={(routerProps, props) => <SessionsContainer sessions={this.state.sessions} students={this.state.students} tutors={this.state.tutors} deleteSession={this.deleteSession} {...routerProps} {...props} />}/>
-                </Switch>
+            <div className="sessions">
+                <p>[SessionsContainer]</p>
+                <p>[SessionItem]</p><br></br>
+            </div>
+            <div className="test-area">
+                <input name="search" placeHolder="Search Students" value={this.state.search} onChange={this.handleSearch} /><br></br><br></br>
+                <button onClick={this.handleClick}>Test Button</button> 
+            </div>
+            <Switch> 
+                <Route exact path="/sessions/new" render={(props) => <NewSessionForm sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} handleNewSession={this.handleNewSession} {...props}/>}/>
+                <Route exact path="/sessions" render={(routerProps, props) => <SessionsContainer sessions={this.state.sessions} students={this.state.students} tutors={this.state.tutors} deleteSession={this.deleteSession} {...routerProps} {...props} />}/>
+            </Switch>
             </div>
         )
     }
