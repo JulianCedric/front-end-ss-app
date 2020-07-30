@@ -60,6 +60,46 @@ class Home extends React.Component {
         this.fetchTutors()
     }
 
+    handleNewSession = (newSession) => {
+        this.setState({sessions: [...this.state.sessions, newSession]})
+      }
+    
+    updateStatus = (sessionId, preAssessmentCompletionStatus) => {
+    fetch(`http://localhost:3005/sessions/${sessionId}`, {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json",
+        Accept: "application/json"
+        },
+        body: JSON.stringify( {
+            preAssessmentCompletionStatus: true
+        })
+        })
+        .then(resp => resp.json())
+        .then(updatedSession => {
+            let newSessionArray = this.state.sessions.map(session => {
+            if (session.id === sessionId) {
+            return updatedSession
+        }
+            return session
+        })
+      })}
+    
+    deleteSession = id => {
+    fetch(`http://localhost:3005/api/v1/sessions/${id}`, {
+        method: 'DELETE',
+        headers: {
+        "Content-Type": "application/json",
+        Accept: 'application/json'
+        },
+    })
+        .then(resp =>resp.json())
+        .then(() => {
+            let newSessionsArray = this.state.sessions.filter(session=> session.id !== id)
+            this.setState({session: newSessionsArray})
+        })
+    }
+
     render() { 
         return (
             <div className="home">
@@ -91,7 +131,8 @@ class Home extends React.Component {
                     </p>
                 </div>
                 <Switch> 
-                    <Route exact path="/sessions" render={(routerProps, props) => <Sessions sessions={this.props.x} {...routerProps} {...props} />}/>
+                    <Route exact path="/sessions/new" render={(props) => <NewSessionForm sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} handleNewSession={this.handleNewSession} {...props}/>}/>
+                    <Route exact path="/sessions" render={(routerProps, props) => <Sessions sessions={this.state.sessions} students={this.state.students} tutors={this.state.tutors} deleteSession={this.deleteSession} {...routerProps} {...props} />}/>
                 </Switch>
             </div>
         )
