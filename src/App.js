@@ -21,32 +21,13 @@ import Home from './components/Home';
 const API = "http://localhost:3005/api/v1/sessions"
 
 class App extends React.Component {
-  state = {  
-    view: 'home',
-    sessions: [],
-    students: [],
-    tutors: [],
-    completionStatus: false
-  }
-
-changeSessionsState = sessions => {
-    this.setState({sessions: sessions})
-  }
-
-changeStudentsState = students => {
-    this.setState({students})
-  }
-
-changeTutorsState = tutors => {
-    this.setState({tutors})
-  }
-
+  
   handleNewSession = (newSession) => {
     this.setState({sessions: [...this.state.sessions, newSession]})
   }
 
   updateStatus = (sessionId, preAssessmentCompletionStatus) => {
-    fetch(`http://localhost:3005/sessions/${sessionsId}`, {
+    fetch(`http://localhost:3005/sessions/${sessionId}`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +45,7 @@ changeTutorsState = tutors => {
         }
           return session
       })
-  }
+  })}
 
   deleteSession = id => {
     console.log(id)
@@ -76,18 +57,14 @@ changeTutorsState = tutors => {
       },
     })
       .then(resp =>resp.json())
-      .then(()=>{
+      .then(() => {
             let newSessionsArray = this.state.sessions.filter(session=> session.id !== id)
             this.setState({session: newSessionsArray})
         })
-    
-
     }
-
+        
   render(){
-
     // console.log(this.state)
-
     return (
       <div className="App">
         <Navbar /> 

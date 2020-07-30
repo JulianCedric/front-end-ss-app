@@ -5,11 +5,61 @@ import { Route, Switch} from 'react-router-dom';
 import Sessions from './Sessions';
 import NewSessionForm from './NewSessionForm';
 
-const API = "http://localhost:3000/api/v1/sessions"
-const API_Students = "http://localhost:3000/api/v1/students"
-const API_Tutors = "http://localhost:3000/api/v1/tutors"
+const API = "http://localhost:3005/api/v1/sessions"
+const API_Students = "http://localhost:3005/api/v1/students"
+const API_Tutors = "http://localhost:3005/api/v1/tutors"
 
 class Home extends React.Component {
+    state = {  
+        view: 'home',
+        sessions: [],
+        students: [],
+        tutors: [],
+        completionStatus: false
+      }
+
+    changeSessionsState = sessions => {
+        this.setState({sessions})
+    }
+      
+    changeStudentsState = students => {
+        this.setState({students})
+    }
+      
+    changeTutorsState = tutors => {
+        this.setState({tutors})
+    }
+
+    fetchSessions = () => {
+        fetch(API)
+        .then(resp => resp.json())
+        .then(sessions => {
+            this.changeSessionsState(sessions)
+            console.log(sessions)})
+    }
+
+    fetchStudents = () => {
+        fetch(API_Students)
+        .then(resp => resp.json())
+        .then(students => {
+            this.changeStudentsState(students) 
+            console.log(students)})
+    }
+
+    fetchTutors = () => {
+        fetch(API_Tutors)
+        .then(resp => resp.json())
+        .then(tutors => {
+            this.changeTutorsState(tutors)
+            console.log(tutors)})
+    }
+
+    componentDidMount(){
+        this.fetchSessions();
+        this.fetchStudents();
+        this.fetchTutors()
+    }
+
     render() { 
         return (
             <div className="home">

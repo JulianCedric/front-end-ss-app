@@ -1,42 +1,12 @@
 import React from 'react';
 import { Switch } from 'react-router-dom'
 
-const API = "http://localhost:3005/api/v1/sessions"
-const API_Students = "http://localhost:3005/api/v1/students"
-const API_Tutors = "http://localhost:3005/api/v1/tutors"
-
 class NewSessionForm extends React.Component {
     state = {
         tutor_id: "",
         student_id: "",
         date: "",
         comment: ""
-    }
-
-    fetchSessions = () => {
-        fetch(API)
-        .then(resp => resp.json())
-        .then(sessions => this.props.changeSessionsState(sessions))
-    }
-
-    fetchStudents = () => {
-        fetch(API_Students)
-        .then(resp => resp.json())
-        .then(students => {
-            this.props.changeStudentsState(students) 
-            console.log(students)})
-    }
-
-    fetchTutors = () => {
-        fetch(API_Tutors)
-        .then(resp => resp.json())
-        .then(tutors => this.props.changeTutorsState(tutors))
-    }
-
-    componentDidMount(){
-        this.fetchSessions();
-        this.fetchStudents();
-        this.fetchTutors()
     }
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
