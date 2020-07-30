@@ -14,7 +14,7 @@ import {BrowserRouter as Router,
   useParams} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import NewSessionForm from './components/NewSessionForm';
-import Sessions from './components/Sessions';
+import Sessions from './components/SessionsContainer';
 import Login from './components/Login';
 import Home from './components/Home';
 

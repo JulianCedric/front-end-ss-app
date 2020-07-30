@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SessionDetails = props => {
+const SessionItem = props => {
 
     let { push, path, id, deleteSession, date, student, tutor, preAssessmentCompletionStatus, comment } = props;
 
@@ -32,4 +32,4 @@ const SessionDetails = props => {
     );
 }
  
-export default SessionDetails;
+export default SessionItem;

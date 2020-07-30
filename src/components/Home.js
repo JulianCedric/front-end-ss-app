@@ -1,9 +1,7 @@
-// 
-
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
-import Sessions from './Sessions';
 import NewSessionForm from './NewSessionForm';
+import Sessions from './SessionsContainer';
 
 const API = "http://localhost:3005/api/v1/sessions"
 const API_Students = "http://localhost:3005/api/v1/students"

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch } from 'react-router-dom'
 
 class NewSessionForm extends React.Component {
     state = {
@@ -41,8 +40,8 @@ class NewSessionForm extends React.Component {
     }
 
     render(){
+        console.log(this.props)
         let { tutor_id, student_id, date, comment } = this.state;
-
         return (
             <div className="simple-flex-col">
                 <h2 className="mediumPurpleText">Create a New Session</h2>
