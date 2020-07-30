@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 import NewSessionForm from './NewSessionForm';
-import Sessions from './SessionsContainer';
+import SessionsContainer from './SessionsContainer';
 
 const API = "http://localhost:3005/api/v1/sessions"
 const API_Students = "http://localhost:3005/api/v1/students"
@@ -14,10 +14,11 @@ class Home extends React.Component {
         students: [],
         tutors: [],
         completionStatus: false
+        filter: "",
       }
 
     changeSessionsState = sessions => {
-        this.setState({sessions})
+        this.setState({sessions}, console.log(sessions))
     }
       
     changeStudentsState = students => {
@@ -130,11 +131,12 @@ class Home extends React.Component {
                 </div>
                 <Switch> 
                     <Route exact path="/sessions/new" render={(props) => <NewSessionForm sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} handleNewSession={this.handleNewSession} {...props}/>}/>
-                    <Route exact path="/sessions" render={(routerProps, props) => <Sessions sessions={this.state.sessions} students={this.state.students} tutors={this.state.tutors} deleteSession={this.deleteSession} {...routerProps} {...props} />}/>
+                    <Route exact path="/sessions" render={(routerProps, props) => <SessionsContainer sessions={this.state.sessions} students={this.state.students} tutors={this.state.tutors} deleteSession={this.deleteSession} {...routerProps} {...props} />}/>
                 </Switch>
             </div>
         )
     }
 }
  
-export default Home;
+export default Home; 
+// 

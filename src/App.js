@@ -27,10 +27,10 @@ class App extends React.Component {
       <div className="App">
         <Navbar /> 
         <Switch>
-          <Route exact path="/sessions/new" render={(props) => <NewSessionForm {...props}/>}/>
-          <Route exact path="/sessions" render={(props) => <Sessions {...props}/>}/>
+          <Route exact path="/sessions/new" render={routerProps => <NewSessionForm {...routerProps}/>}/>
+          <Route exact path="/sessions" render={routerProps => <Sessions {...routerProps}/>}/>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/" render={(props) => <Home {...props} />}/>
+          <Route exact path="/" render={routerProps => <Home {...routerProps} />}/>
         </Switch>
       </div>
     );

@@ -1,56 +1,22 @@
 import React from 'react';
-import { Route, Switch} from 'react-router-dom';
 import SessionItem from "./SessionItem";
 
-class Sessions extends React.Component {
+const SessionsContainer = props => {
+    console.log(props.sessions)
+    let { sessions, students, tutors } = props;
+    console.log(sessions)
+    return (
+        <>
+        <div className="sessions-container">
+            <h2 className="mediumPurpleText">Sessions</h2>
+                <div>
+                    {sessions.map(session => <SessionItem key={session.id} {...session} history={props.history} />)}        
+                    {students.map(student => <SessionItem key={student.id} {...student} history={props.history} />)}
+                    {tutors.map(tutor => <SessionItem key={tutor.id} {...tutor} history={props.history} />)}
+                </div>
+        </div>
+        </>
+    );
+}
 
-    console.log(props)
-
-    render(){
-        return (
-            <div className="sessions">
-                <h2 className="mediumPurpleText">Sessions</h2>
-                <h3>Page Under Construction Until 7/29</h3>
-                    {props.sessions.map(session => <SessionItem name="session" id={session.id} key={session.id} {...session} deleteSession={props.deleteSession} history={props.history} />)}
-                    {props.students.map(student => <SessionItem name="student" key={student.id} {...student} history={props.history} />)}
-                    {props.tutors.map(tutor => <SessionItem name="tutor" key={tutor.id} {...tutor} history={props.history} />)}
-                            
-            </div>
-        );
-    }
-};
-
-export default Sessions;
-
-
-{/*                 
-                    <table>
-                        <thead>
-                            
-                            <tr>
-                                <th>
-                                    <h4>Date</h4>
-                                </th>
-                                <th>
-                                    <h4>Student</h4>
-                                </th>
-                                <th>
-                                    <h4>My Notes</h4>
-                                </th>
-                                <th>
-                                    <h4> + </h4>    
-                                </th>
-                                <th>
-                                    <h4> - </h4>    
-                                </th>
-                            </tr>
-
-                            <tbody>
-                                {props.sessions.map(session => <SessionItem key={session.id} {...session} deleteSession={props.deleteSession} history={props.history} />)}
-                                {props.students.map(student => <SessionItem key={student.id} {...student} history={props.history} />)}
-                                {props.tutors.map(tutor => <SessionItem key={tutor.id} {...tutor} history={props.history} />)}
-                            </tbody>
-                            </thead>
-                    </table> */}
-// </div>
-
+export default SessionsContainer;
