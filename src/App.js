@@ -27,7 +27,7 @@ class App extends React.Component {
     sessions: [],
     students: [],
     tutors: [],
-    // search: ""
+    // filter: ""
   }
 
 /////// 
@@ -126,7 +126,7 @@ fetch(`http://localhost:3005/api/v1/sessions/${id}`, {
           <Route exact path="/sessions/new" render={routerProps => <NewSessionForm {...routerProps}/>}/>
           <Route exact path="/sessions" render={routerProps => <Sessions {...routerProps}/>}/>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/" render={routerProps => <Home {...routerProps} />}/>
+          <Route exact path="/" render={routerProps => <Home students={this.state.students} {...routerProps} />}/>
         </Switch>
       </div>
     );

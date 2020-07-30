@@ -8,34 +8,34 @@ class Home extends React.Component {
     // Next: Render list of sessions on homepage as well.
 
     state = {
-        search: "",
-        
+        search: ""
     }
 
     filterBy = () => {
-        return this.state.students.filter(student => student.name.toLowerCase().includes(this.state.filter.toLowerCase()))
-      } 
+        return this.props.students.filter(student => student.name.toLowerCase().includes(this.state.search.toLowerCase()))
+    } 
       
     handleSearch = e => {
-        this.setState({filter: e.target.value})
+        this.setState({search: e.target.value})
     }
 
-    handleClick = e => {
+    // handleClick = e => {
         
-    }
-
+    // }
 
     render() { 
+        let searchedStudents = this.filterBy()
         return (
             <div className="home">
                 <h2 className="mediumPurpleText">Home</h2>
             <div className="sessions">
-                <p>[SessionsContainer]</p>
-                <p>[SessionItem]</p><br></br>
+                <ul>
+                    {searchedStudents.map(student => <p>{student.name}</p>)}
+                </ul><br></br>
             </div>
             <div className="test-area">
                 <input name="search" placeHolder="Search Students" value={this.state.search} onChange={this.handleSearch} /><br></br><br></br>
-                <button onClick={this.handleClick}>Test Button</button> 
+                {/* <button onClick={this.handleClick}>Test Button</button>  */}
             </div>
             <Switch> 
                 <Route exact path="/sessions/new" render={(props) => <NewSessionForm sessions={this.state.sessions} changeSessionsState={this.changeSessionsState} students={this.state.students} changeStudentsState={this.changeStudentsState} tutors={this.state.tutors} changeTutorsState={this.changeTutorsState} handleNewSession={this.handleNewSession} {...props}/>}/>
