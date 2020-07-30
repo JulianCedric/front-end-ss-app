@@ -14,15 +14,14 @@ class Home extends React.Component {
         students: [],
         tutors: [],
         completionStatus: false,
-        filter: "",
-        search: ""
+        filter: ""
       }
 
 /////// 
 
     filterBy = () => {
         return this.state.students.filter(student => student.name.toLowerCase().includes(this.state.filter.toLowerCase()))
-    }
+    } 
 
     handleSearch = e => {
         this.setState({filter: e.target.value})
